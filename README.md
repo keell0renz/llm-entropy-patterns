@@ -14,6 +14,18 @@ The study uses a graph, with X as transformer layer number and Y as average entr
 
 Also study later uses a graph with X as token (step in autoregressive generation) and Y as average entropy / varentropy across layers across heads per specific token (step).
 
+### Baseline
+
+Study will ask GPT-4o to come up with 50 different general prompts to feed to 4 LLaMA models. All answers will be in 100 words range.
+
+Graph will be made for each model, displaying average entropy / varentropy dynamics per layer across samples across steps.
+
+### Factual vs Creative
+
+Study will ask GPT-4o to come up with 25 different prompts which question about dry and factural information, and 25 different prompts asking LLM do generate something creative.
+
+Graph will be made for each model, displaying average entropy / varentropy trends for factual and creative prompts, in same way Baseline displayed entropy / varentropy trends.
+
 ### Truthfulness and Hallucination
 
 The study will evaluate models on [SimpleQA](https://openai.com/index/introducing-simpleqa/) benchmark by OpenAI, record attention weights each run, and later study will compare entropy and varentropy patterns across non-hallucinated responses (Correct, Not Attempted) and hallucinated (Incorrect).
