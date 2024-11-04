@@ -1,5 +1,5 @@
 [project]
-name = "pipeline"
+name = "llm-entropy-patterns"
 version = "0.0.0"
 description = "Pre-built template for deep learning pipelines."
 readme = "README.md"
