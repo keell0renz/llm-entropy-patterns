@@ -7,6 +7,7 @@ load_dotenv()
 
 app = typer.Typer()
 
+
 @app.command()
 def health():
     """
@@ -23,7 +24,7 @@ def upload():
     Upload missing files to Hugging Face.
     """
 
-    upload_missing_files(local_dir="checkpoints", hf_subdir="checkpoints")
+    upload_missing_files(local_dir="files", hf_subdir="files")
 
 
 @app.command()
@@ -32,7 +33,7 @@ def download():
     Download missing files from Hugging Face.
     """
 
-    download_missing_files(local_dir="checkpoints", hf_subdir="checkpoints")
+    download_missing_files(local_dir="files", hf_subdir="files")
 
 
 if __name__ == "__main__":

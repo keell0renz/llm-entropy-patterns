@@ -14,11 +14,11 @@ __pycache__/
 # Lockfile
 uv.lock
 
-# Ignore files inside the checkpoints directory
-checkpoints/*
+# Ignore files inside the files directory
+files/*
 
 # Allow the directory to exist in the repository
-!checkpoints/.gitkeep
+!files/.gitkeep
 
 # Jupyter notebooks (experiments, etc)
 experiments/*
