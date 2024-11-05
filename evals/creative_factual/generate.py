@@ -4,8 +4,8 @@ from evals.creative_factual.prompts import (
 )
 from typing import List, Literal
 from pydantic import BaseModel
-from openai import OpenAI  # type: ignore
-import instructor  # type: ignore
+from openai import OpenAI
+import instructor
 import csv
 import os
 
