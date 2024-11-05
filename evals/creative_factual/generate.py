@@ -1,4 +1,7 @@
-from evals.creative_factual_prompts import creative_prompt, factual_prompt
+from evals.creative_factual.prompts import (
+    creative_prompt,
+    factual_prompt,
+)
 from typing import List, Literal
 from pydantic import BaseModel
 from openai import OpenAI  # type: ignore
