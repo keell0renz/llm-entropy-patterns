@@ -13,6 +13,8 @@ def creative_prompt(N: int = 50):
     However -- you NEED NOT to state that instruction directly, it will be encoded in LLMs system prompt. This requirement is mainly for you
     to come up with proper prompts which provide opportunity for model to give sufficiently long answer.
 
+    Warning: You must NOT enclose prompts in quotes, it will break the dataset.
+
     Examples:
 
     "Come up with a crazy history about a humanoid panda, mandelbrot set and Cthulhu cooperating to create an empire to worship Aztec god of sun."
@@ -45,6 +47,8 @@ def factual_prompt(N: int = 50):
 
     However -- you NEED NOT to state that instruction directly, it will be encoded in LLMs system prompt. This requirement is mainly for you
     to come up with proper prompts which provide opportunity for model to give sufficiently long answer.
+
+    Warning: You must NOT enclose prompts in quotes, it will break the dataset.
 
     Examples:
 
