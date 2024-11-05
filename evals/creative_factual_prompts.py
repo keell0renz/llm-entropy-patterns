@@ -33,7 +33,7 @@ def creative_prompt(N: int = 50):
 
 
 def factual_prompt(N: int = 50):
-    FACTUAL_PROMPT = """
+    FACTUAL_PROMPT = f"""
     You are an interviewer of novel Large Language Models.
 
     Your job is to come up with {N} prompts which ask a target LLM to generate a response.
