@@ -3,6 +3,7 @@ from utils.health import health_check
 from evals.creative_factual import generate_creative_factual_dataset
 from dotenv import load_dotenv
 from rich import print
+from typer import Argument, Option
 import typer
 
 load_dotenv()
@@ -39,7 +40,10 @@ def download():
 
 
 @app.command()
-def generate_dataset(type: str, N: int = 50):
+def generate_dataset(
+    type: str = Argument(..., help="The type of dataset to generate."),
+    N: int = Option(50, help="The number of prompts to generate."),
+):
     """
     Generate a creative or factual dataset.
 
