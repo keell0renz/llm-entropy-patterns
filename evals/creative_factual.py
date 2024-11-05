@@ -1,8 +1,8 @@
 from evals.creative_factual_prompts import creative_prompt, factual_prompt
 from typing import List, Literal
 from pydantic import BaseModel
-from openai import OpenAI
-import instructor
+from openai import OpenAI  # type: ignore
+import instructor  # type: ignore
 import csv
 import os
 
@@ -35,4 +35,4 @@ def generate_creative_factual_dataset(
         writer = csv.writer(file)
         writer.writerow(["prompt"])
         for prompt in output.prompts:
-            writer.writerow([prompt])
+            writer.writerow([str(prompt).replace('"', "")])
