@@ -10,6 +10,7 @@ dependencies = [
     "nanoid>=2.0.0",
     "numpy>=2.1.2",
     "openai>=1.54.1",
+    "pydantic>=2.9.2",
     "python-dotenv>=1.0.1",
     "rich>=13.9.3",
     "safetensors>=0.4.5",
