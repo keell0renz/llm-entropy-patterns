@@ -2,6 +2,7 @@ from utils.hugginface import upload_missing_files, download_missing_files
 from utils.health import health_check
 from evals.creative_factual import generate_creative_factual_dataset
 from dotenv import load_dotenv
+from rich import print
 import typer
 
 load_dotenv()
@@ -47,13 +48,13 @@ def generate_dataset(type: str, N: int = 50):
         N (int): The number of prompts to generate. Default is 50.
     """
     if type not in ["creative", "factual"]:
-        typer.echo(
+        print(
             "[bold red]Invalid type. Choose either 'creative' or 'factual'[/bold red]."
         )
         raise typer.Exit(code=1)
 
     generate_creative_factual_dataset(type, N)
-    typer.echo(
+    print(
         f"[bold green]{type.capitalize()} dataset with {N} prompts generated successfully.[/bold green]"
     )
 
