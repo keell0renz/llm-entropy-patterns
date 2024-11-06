@@ -11,6 +11,10 @@ def generate_data(model_hf: str, prompts_path: str, output_path: str):
     tokenizer = AutoTokenizer.from_pretrained(model_hf)
     model = AutoModelForCausalLM.from_pretrained(model_hf)
 
+    # Add device selection
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    model = model.to(device)
+
     prompts = []
     with open(prompts_path, "r") as f:
         reader = csv.reader(f)
@@ -29,6 +33,9 @@ def generate_data(model_hf: str, prompts_path: str, output_path: str):
         ]
 
         inputs = tokenizer.apply_chat_template(messages, return_tensors="pt")
+
+        # Move inputs to GPU
+        inputs = inputs.to(device)
 
         outputs = model.generate(
             inputs,
