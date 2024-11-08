@@ -21,7 +21,7 @@ def generate_data(model_hf: str, prompts_path: str, output_path: str):
         for row in reader:
             prompts.append(row[0])
 
-    outputs: List[Tuple[str, Tuple[Tuple[torch.FloatTensor]]]] = []
+    all_outputs: List[Tuple[str, Tuple[Tuple[torch.FloatTensor]]]] = []
 
     for prompt in tqdm.tqdm(prompts):
         messages = [
@@ -37,7 +37,7 @@ def generate_data(model_hf: str, prompts_path: str, output_path: str):
         # Move inputs to GPU
         inputs = inputs.to(device)
 
-        outputs = model.generate(
+        generation_output = model.generate(
             inputs,
             max_new_tokens=1024,
             return_dict_in_generate=True,
@@ -46,15 +46,15 @@ def generate_data(model_hf: str, prompts_path: str, output_path: str):
         )
 
         response = (
-            tokenizer.decode(outputs.sequences[0], skip_special_tokens=True)
+            tokenizer.decode(generation_output.sequences[0], skip_special_tokens=True)
             .split("assistant")[-1]
             .strip()
         )
 
-        outputs.append((response, outputs.attentions))
+        all_outputs.append((response, generation_output.attentions))
 
     # Create directory if it doesn't exist
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
     with open(output_path, "wb") as f:
-        pickle.dump(outputs, f)
+        pickle.dump(all_outputs, f)
