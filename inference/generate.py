@@ -42,7 +42,7 @@ def generate_data(model_hf: str, prompts_path: str, output_path: str):
             max_new_tokens=1024,
             return_dict_in_generate=True,
             output_attentions=True,
-            use_cache=False,
+            use_cache=True,
         )
 
         response = (
