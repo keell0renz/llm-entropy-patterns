@@ -1,10 +1,14 @@
-from transformers import AutoModelForCausalLM, AutoTokenizer
+from transformers import AutoModelForCausalLM, AutoTokenizer, logging
 from typing import List, Tuple
+import warnings
 import pickle
 import torch
 import tqdm
 import csv
 import os
+
+warnings.filterwarnings("ignore")
+logging.set_verbosity_error()
 
 
 def generate_data(model_hf: str, prompts_path: str, output_path: str):
