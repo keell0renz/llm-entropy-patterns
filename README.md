@@ -10,9 +10,7 @@ This study aims to extrapolate this aproach deeper, into attention layers.
 
 The study evaluates LLaMA 3.2 of sizes 1B, 3B, 11B (Vision), 90B (Vision)
 
-The study uses a graph, with X as transformer layer number and Y as average entropy / varentropy across attention heads, + displaying standard deviations.
-
-Also study later uses a graph with X as token (step in autoregressive generation) and Y as average entropy / varentropy across layers across heads per specific token (step).
+The study uses a graph with X as token (step in autoregressive generation) and Y as average entropy / varentropy across layers across heads per specific token (step).
 
 ### Factual vs Creative
 
