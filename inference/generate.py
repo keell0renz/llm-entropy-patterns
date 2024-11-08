@@ -25,9 +25,10 @@ def generate_data(model_hf: str, prompts_path: str, output_path: str):
         for row in reader:
             prompts.append(row[0])
 
-    all_outputs: List[Tuple[str, Tuple[Tuple[torch.FloatTensor]]]] = []
+    # Create directory if it doesn't exist
+    os.makedirs(output_path, exist_ok=True)
 
-    for prompt in tqdm.tqdm(prompts):
+    for i, prompt in enumerate(tqdm.tqdm(prompts)):
         messages = [
             {
                 "role": "system",
@@ -55,10 +56,7 @@ def generate_data(model_hf: str, prompts_path: str, output_path: str):
             .strip()
         )
 
-        all_outputs.append((response, generation_output.attentions))
-
-    # Create directory if it doesn't exist
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
-
-    with open(output_path, "wb") as f:
-        pickle.dump(all_outputs, f)
+        # Save attentions for each prompt
+        attentions_path = os.path.join(output_path, f"attentions_{i}.pickle")
+        with open(attentions_path, "wb") as f:
+            pickle.dump((response, generation_output.attentions), f)
