@@ -1,6 +1,6 @@
 from utils.hugginface import upload_missing_files, download_missing_files
 from utils.health import health_check
-from evals.creative_factual.generate import generate_creative_factual_dataset
+from creative_factual.generate import generate_creative_factual_dataset
 from inference.generate import generate_data
 from dotenv import load_dotenv
 from rich import print

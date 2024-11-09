@@ -1,4 +1,4 @@
-from evals.creative_factual.prompts import (
+from creative_factual.prompts import (
     creative_prompt,
     factual_prompt,
 )
