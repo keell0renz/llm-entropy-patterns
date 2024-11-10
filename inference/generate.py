@@ -17,6 +17,10 @@ def generate_data(model_hf: str, prompts_path: str, output_path: str):
     tokenizer = AutoTokenizer.from_pretrained(model_hf)
     model = AutoModelForCausalLM.from_pretrained(model_hf)
 
+    if tokenizer.pad_token is None:
+        tokenizer.pad_token = tokenizer.eos_token
+        model.config.pad_token_id = model.config.eos_token_id
+
     # Add device selection
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = model.to(device)
