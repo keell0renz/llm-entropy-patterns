@@ -7,6 +7,8 @@ import tqdm
 import csv
 import os
 
+from inference.statistics import calculate_entropies
+
 warnings.filterwarnings("ignore")
 logging.set_verbosity_error()
 
@@ -25,8 +27,7 @@ def generate_data(model_hf: str, prompts_path: str, output_path: str):
         for row in reader:
             prompts.append(row[0])
 
-    # Create directory if it doesn't exist
-    os.makedirs(output_path, exist_ok=True)
+    entropies = []
 
     for i, prompt in enumerate(tqdm.tqdm(prompts)):
         messages = [
@@ -56,7 +57,10 @@ def generate_data(model_hf: str, prompts_path: str, output_path: str):
             .strip()
         )
 
-        # Save attentions for each prompt
-        attentions_path = os.path.join(output_path, f"attentions_{i}.pickle")
-        with open(attentions_path, "wb") as f:
-            pickle.dump((response, generation_output.attentions), f)
+        entropies.append((calculate_entropies(generation_output.attentions), response))
+
+    # Create directory if it doesn't exist
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+
+    with open(output_path, "wb") as f:
+        pickle.dump(entropies, f)
