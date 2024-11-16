@@ -6,6 +6,8 @@ This study is heavily inspired by [Entropix](https://github.com/xjdr-alt/entropi
 
 This study aims to extrapolate this aproach deeper, into attention layers.
 
+_UPDATE_: This research also did not show promising results. At least I learned a lot in the process!
+
 ## Methodology
 
 The study evaluates LLaMA 3.2 of sizes 1B, 3B, 11B (Vision), 90B (Vision)
