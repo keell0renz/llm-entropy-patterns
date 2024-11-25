@@ -1,12 +1,12 @@
 # Attention Entropy Patterns
 
+_UPDATE_: This research also did not show promising results, but outputted interesting insights about entropy patterns. At least I learned a lot in the process!
+
 This research project aims to identify the patterns of entropy and varentropy in attention weights, and their relation to model factuality, reasoning performance and hallucination rates.
 
 This study is heavily inspired by [Entropix](https://github.com/xjdr-alt/entropix) project, which uses a special token sampling strategy based on entropy and varentropy of token probability distributions, which has shown promising results on reasoning.
 
 This study aims to extrapolate this aproach deeper, into attention layers.
-
-_UPDATE_: This research also did not show promising results. At least I learned a lot in the process!
 
 ## Methodology
 
